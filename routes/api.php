@@ -14,9 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//API route for login user
+Route::post('/login', [App\Http\Controllers\api\AuthController::class, 'login']);
+
+//API register
+Route::post('/register', [App\Http\Controllers\api\AuthController::class, 'register']);
+
+//protecting routes
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//API route for login user
-Route::post('/login', [App\Http\Controllers\api\AuthController::class, 'login']);
+Route::post('/logout', [App\Http\Controllers\api\AuthController::class, 'logout']);
+

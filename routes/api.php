@@ -25,7 +25,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//forgotpassword
+Route::post('password/email',  App\Http\Controllers\api\ForgotPasswordController::class);
+Route::post('password/code/check', App\Http\Controllers\api\CodeCheckController::class);
+Route::post('password/reset', [App\Http\Controllers\api\ResetPasswordController::class,'resPassword']);
+
 Route::get('/logout', [App\Http\Controllers\api\AuthController::class, 'logout'])->middleware('auth:sanctum');;
+
+
+
 /*Route::middleware('auth:sanctum')->group( function () {
     Route::get('/logout', [App\Http\Controllers\api\AuthController::class, 'logout']);
 });*/
